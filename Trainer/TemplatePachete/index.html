@@ -1,0 +1,90 @@
+<section class="view-panel">
+  <p id="tpl-status" class="message"></p>
+
+  <!-- Vedere 1: Carduri Pachete + Card Adăugare -->
+  <section id="packages-cards-view" class="packages-grid" aria-label="Pachete disponibile">
+    <p class="empty-hint">Se încarcă pachetele...</p>
+  </section>
+
+  <!-- Vedere 2: Ședințele pachetului selectat -->
+  <div id="package-sessions-view" class="hidden">
+    <div class="tpl-selected-bar">
+      <button type="button" id="back-to-packages-btn" class="btn-back-packages">
+        ← Înapoi la pachete
+      </button>
+    </div>
+
+    <section id="sessions-grid" class="sessions-grid" aria-label="Ședințe pachet"></section>
+  </div>
+
+  <!-- Modal Comun Editare Ședință: Pool comun + Tab Exerciții / Tab Workouts -->
+  <div id="session-edit-modal" class="tpl-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="session-modal-title">
+    <div class="tpl-modal">
+      <div class="tpl-modal-header">
+        <h2 id="session-modal-title" class="tpl-modal-title">Editează ședință</h2>
+        <button type="button" id="session-modal-close-btn" class="tpl-modal-close" aria-label="Închide">✕</button>
+      </div>
+
+      <div class="tpl-modal-body">
+        <!-- Pool comun -->
+        <div class="tpl-modal-section">
+          <div class="tpl-modal-section-head">
+            <h3>Exerciții în ședință (<span id="session-modal-selected-count">0</span>)</h3>
+          </div>
+          <ul id="session-modal-selected-list" class="tpl-modal-list"></ul>
+        </div>
+
+        <!-- Tab-uri sursă -->
+        <div class="tpl-modal-tabs" role="tablist" aria-label="Sursă exerciții">
+          <button type="button" id="tab-btn-exercises" class="tpl-tab-btn active" role="tab" aria-selected="true" data-tab="exercises">
+            Exerciții
+          </button>
+          <button type="button" id="tab-btn-workouts" class="tpl-tab-btn" role="tab" aria-selected="false" data-tab="workouts">
+            Workouts
+          </button>
+        </div>
+
+        <!-- Tab 1: Catalog Exerciții cu filtre -->
+        <div id="tab-panel-exercises" class="tpl-tab-panel" role="tabpanel">
+          <div class="tpl-filters-row">
+            <input
+              type="search"
+              id="session-ex-search"
+              class="tpl-filter-input"
+              placeholder="Caută exercițiu după nume..."
+            />
+            <select id="session-filter-cat" class="tpl-filter-select" aria-label="Filtrează după categorie">
+              <option value="">Toate categoriile</option>
+            </select>
+            <select id="session-filter-mus" class="tpl-filter-select" aria-label="Filtrează după grupă musculară">
+              <option value="">Toate grupele</option>
+            </select>
+            <select id="session-filter-eq" class="tpl-filter-select" aria-label="Filtrează după echipament">
+              <option value="">Tot echipamentul</option>
+            </select>
+          </div>
+
+          <ul id="session-modal-catalog-list" class="tpl-modal-list"></ul>
+        </div>
+
+        <!-- Tab 2: Workouts -->
+        <div id="tab-panel-workouts" class="tpl-tab-panel hidden" role="tabpanel">
+          <div class="tpl-workout-picker-row">
+            <select id="session-workout-select" class="tpl-filter-select" aria-label="Selectează un workout">
+              <option value="">Alege un workout...</option>
+            </select>
+            <button type="button" id="session-apply-workout-btn" class="btn-card-edit">
+              + Adaugă workout
+            </button>
+          </div>
+
+          <ul id="session-modal-workout-exercises-list" class="tpl-modal-list"></ul>
+        </div>
+      </div>
+
+      <div class="tpl-modal-footer">
+        <button type="button" id="session-modal-save-btn" class="btn-card-edit">Salvează ședința</button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trainer — Aplicație</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./trainer.css" />
+  <link id="route-stylesheet" rel="stylesheet" href="" />
+</head>
+<body class="has-topbar" style="display: none;">
+  <header class="topbar">
+
+
+    <nav class="topbar-nav" aria-label="Navigare principală Trainer">
+      <a href="#/dashboard" data-route="/dashboard" class="topbar-nav-link">Dashboard</a>
+      <a href="#/clienti" data-route="/clienti" class="topbar-nav-link">Clienți</a>
+      <a href="#/workouts" data-route="/workouts" class="topbar-nav-link">Workouts</a>
+      <a href="#/template-pachete" data-route="/template-pachete" class="topbar-nav-link">Template Pachete</a>
+    </nav>
+
+    <div class="avatar-menu-wrapper">
+      <button
+        type="button"
+        id="avatar-btn"
+        class="avatar-btn"
+        aria-haspopup="menu"
+        aria-expanded="false"
+        aria-controls="avatar-dropdown"
+        title="Meniu cont"
+      >
+        TR
+      </button>
+
+      <div id="avatar-dropdown" class="avatar-dropdown hidden" role="menu">
+        <div class="avatar-dropdown-header">
+          <span id="menu-user-email" class="avatar-dropdown-email">Utilizator</span>
+        </div>
+
+        <button type="button" id="open-password-modal" class="dropdown-item" role="menuitem">
+          <span>Schimbă parola</span>
+        </button>
+
+        <button type="button" id="open-muscle-modal" class="dropdown-item" role="menuitem">
+          <span>Adaugă grupă musculară</span>
+        </button>
+
+        <button type="button" id="open-category-modal" class="dropdown-item" role="menuitem">
+          <span>Adaugă categorie</span>
+        </button>
+
+        <button type="button" id="open-equipment-modal" class="dropdown-item" role="menuitem">
+          <span>Adaugă echipament</span>
+        </button>
+
+        <button type="button" id="open-exercise-modal" class="dropdown-item" role="menuitem">
+          <span>Adaugă exercițiu</span>
+        </button>
+
+        <button type="button" id="open-package-modal" class="dropdown-item" role="menuitem">
+          <span>Adaugă pachet</span>
+        </button>
+
+        <div class="dropdown-divider" role="separator"></div>
+
+        <button type="button" id="logout-btn" class="dropdown-item danger" role="menuitem">
+          <span>Deconectare</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conținutul injectat de router.js -->
+  <div id="app-content" class="app-content-shell"></div>
+
+  <!-- Modaluri globale Trainer -->
+  <div id="password-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="password-modal-title">
+    <div class="modal-card">
+      <h2 id="password-modal-title">Schimbă parola</h2>
+      <form id="password-form">
+        <div class="input-group">
+          <label for="new-password">Parolă nouă</label>
+          <input type="password" id="new-password" required minlength="6" autocomplete="new-password" />
+        </div>
+        <div class="input-group">
+          <label for="confirm-password">Confirmă parola nouă</label>
+          <input type="password" id="confirm-password" required minlength="6" autocomplete="new-password" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancel-password-btn" class="btn-cancel-modal">Anulează</button>
+          <button type="submit" id="save-password-btn">Salvează</button>
+        </div>
+      </form>
+      <p id="password-message" class="message"></p>
+    </div>
+  </div>
+
+  <div id="muscle-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="muscle-modal-title">
+    <div class="modal-card">
+      <h2 id="muscle-modal-title">Adaugă grupă musculară</h2>
+      <form id="muscle-form">
+        <div class="input-group">
+          <label for="muscle-name">Nume grupă musculară</label>
+          <input type="text" id="muscle-name" required placeholder="ex. Piept, Spate, Picioare" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancel-muscle-btn" class="btn-cancel-modal">Anulează</button>
+          <button type="submit" id="save-muscle-btn">Salvează</button>
+        </div>
+      </form>
+      <p id="muscle-message" class="message"></p>
+    </div>
+  </div>
+
+  <div id="category-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="category-modal-title">
+    <div class="modal-card">
+      <h2 id="category-modal-title">Adaugă categorie</h2>
+      <form id="category-form">
+        <div class="input-group">
+          <label for="category-name">Nume categorie</label>
+          <input type="text" id="category-name" required placeholder="ex. Forță, Cardio, Mobilitate" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancel-category-btn" class="btn-cancel-modal">Anulează</button>
+          <button type="submit" id="save-category-btn">Salvează</button>
+        </div>
+      </form>
+      <p id="category-message" class="message"></p>
+    </div>
+  </div>
+
+  <div id="equipment-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="equipment-modal-title">
+    <div class="modal-card">
+      <h2 id="equipment-modal-title">Adaugă echipament</h2>
+      <form id="equipment-form">
+        <div class="input-group">
+          <label for="equipment-name">Nume echipament</label>
+          <input type="text" id="equipment-name" required placeholder="ex. Gantere, Halteră" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancel-equipment-btn" class="btn-cancel-modal">Anulează</button>
+          <button type="submit" id="save-equipment-btn">Salvează</button>
+        </div>
+      </form>
+      <p id="equipment-message" class="message"></p>
+    </div>
+  </div>
+
+  <div id="exercise-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="exercise-modal-title">
+    <div class="modal-card">
+      <h2 id="exercise-modal-title">Adaugă exercițiu</h2>
+      <form id="exercise-form">
+        <div class="input-group">
+          <label for="exercise-name">Nume exercițiu</label>
+          <input type="text" id="exercise-name" required placeholder="ex. Împins la piept cu gantere" />
+        </div>
+        <div class="input-group">
+          <label for="exercise-category">Categorie</label>
+          <select id="exercise-category" required>
+            <option value="">Selectează categoria</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="exercise-muscle">Grupă musculară</label>
+          <select id="exercise-muscle" required>
+            <option value="">Selectează grupa musculară</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="exercise-equipment">Echipament</label>
+          <select id="exercise-equipment" required>
+            <option value="">Selectează echipamentul</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancel-exercise-btn" class="btn-cancel-modal">Anulează</button>
+          <button type="submit" id="save-exercise-btn">Salvează</button>
+        </div>
+      </form>
+      <p id="exercise-message" class="message"></p>
+    </div>
+  </div>
+
+  <div id="package-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="package-modal-title">
+    <div class="modal-card">
+      <h2 id="package-modal-title">Adaugă pachet</h2>
+      <form id="package-form">
+        <div class="input-group">
+          <label for="package-name">Nume pachet</label>
+          <input type="text" id="package-name" required placeholder="ex. Pachet Transformare 12 Ședințe" />
+        </div>
+        <div class="input-group">
+          <label for="package-sessions-count">Număr ședințe</label>
+          <input type="number" id="package-sessions-count" required min="1" max="200" value="4" />
+        </div>
+        <div class="modal-actions">
+          <button type="button" id="cancel-package-btn" class="btn-cancel-modal">Anulează</button>
+          <button type="submit" id="save-package-btn">Salvează</button>
+        </div>
+      </form>
+      <p id="package-message" class="message"></p>
+    </div>
+  </div>
+
+  <script type="module" src="./router.js"></script>
+</body>
+</html>

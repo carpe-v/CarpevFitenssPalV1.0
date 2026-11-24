@@ -1,0 +1,228 @@
+<section class="view-panel profile-panel">
+  <div class="profile-top-bar">
+    <a href="#/clienti" class="back-link">← Înapoi la Clienți</a>
+
+    <div class="profile-top-actions">
+      <button
+        type="button"
+        id="open-share-data-btn"
+        class="btn-top-icon"
+        title="Share data"
+        aria-label="Share data"
+      ></button>
+
+      <button
+        type="button"
+        id="open-assign-btn"
+        class="btn-top-icon"
+        title="Asignează pachet nou"
+        aria-label="Asignează pachet nou"
+      ></button>
+    </div>
+  </div>
+
+  <p id="profile-status" class="message"></p>
+
+  <!-- Pachet activ + Carduri ședințe -->
+  <section class="section-block" aria-label="Pachet activ și ședințe">
+    <div class="section-heading-row">
+      <h2>Pachet activ</h2>
+    </div>
+
+    <div id="active-package-container">
+      <p class="empty-hint">Se încarcă pachetul activ...</p>
+    </div>
+
+    <div id="sessions-grid" class="sessions-grid"></div>
+  </section>
+
+  <!-- Pachete terminate -->
+  <section class="section-block" aria-label="Pachete terminate">
+    <div class="section-heading-row">
+      <h2>Pachete terminate</h2>
+    </div>
+
+    <div id="finished-packages-list" class="finished-list">
+      <p class="empty-hint">Niciun pachet terminat.</p>
+    </div>
+  </section>
+
+  <!-- Modal Editare Ședință -->
+  <div
+    id="session-modal"
+    class="profile-modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="session-modal-title"
+  >
+    <div class="profile-modal wide-modal">
+      <div class="profile-modal-header">
+        <h2 id="session-modal-title" class="profile-modal-title">Editare ședință</h2>
+        <button type="button" id="session-modal-close-btn" class="profile-modal-close" aria-label="Închide">✕</button>
+      </div>
+
+      <div class="profile-modal-body">
+        <div class="add-ex-bar">
+          <button type="button" id="add-session-exercise-btn" class="btn-secondary-small">
+            + Adaugă exercițiu
+          </button>
+        </div>
+
+        <div id="session-exercises-editor" class="session-exercises-editor"></div>
+
+        <p id="session-modal-message" class="message"></p>
+      </div>
+
+      <div class="profile-modal-footer">
+        <button type="button" id="save-session-btn" class="btn-card-edit">Salvează ședința</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Asignare Pachet Nou -->
+  <div
+    id="assign-modal"
+    class="profile-modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="assign-modal-title"
+  >
+    <div class="profile-modal">
+      <div class="profile-modal-header">
+        <h2 id="assign-modal-title" class="profile-modal-title">Asignează pachet</h2>
+        <button type="button" id="assign-modal-close-btn" class="profile-modal-close" aria-label="Închide">✕</button>
+      </div>
+
+      <form id="assign-form" class="profile-modal-body">
+        <div class="inline-field-group">
+          <label for="assign-pkg-select">Alege pachetul</label>
+          <select id="assign-pkg-select" required>
+            <option value="">Selectează un pachet</option>
+          </select>
+        </div>
+
+        <p id="assign-modal-message" class="message"></p>
+
+        <div class="profile-modal-footer">
+          <button type="submit" id="save-assign-btn" class="btn-card-edit">Salvează</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Picker modal Exerciții / Workouts (pornit din "+ Adaugă exercițiu") -->
+  <div
+    id="client-ex-picker-modal"
+    class="tpl-modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="client-ex-picker-title"
+  >
+    <div class="tpl-modal">
+      <div class="tpl-modal-header">
+        <h3 id="client-ex-picker-title" class="tpl-modal-title">Adaugă exerciții în ședință</h3>
+        <button
+          type="button"
+          id="client-ex-picker-close-btn"
+          class="tpl-modal-close"
+          aria-label="Închide"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="tpl-modal-body">
+        <div class="tpl-modal-tabs" role="tablist" aria-label="Sursă exerciții">
+          <button
+            type="button"
+            id="client-picker-tab-exercises"
+            class="tpl-tab-btn active"
+            role="tab"
+            aria-selected="true"
+            data-tab="exercises"
+          >
+            Exerciții
+          </button>
+          <button
+            type="button"
+            id="client-picker-tab-workouts"
+            class="tpl-tab-btn"
+            role="tab"
+            aria-selected="false"
+            data-tab="workouts"
+          >
+            Workouts
+          </button>
+        </div>
+
+        <div id="client-picker-panel-exercises" class="tpl-tab-panel" role="tabpanel">
+          <div class="tpl-filters-row">
+            <input
+              type="search"
+              id="client-picker-ex-search"
+              class="tpl-filter-input"
+              placeholder="Caută exercițiu după nume..."
+            />
+            <select
+              id="client-picker-filter-cat"
+              class="tpl-filter-select"
+              aria-label="Filtrează după categorie"
+            >
+              <option value="">Toate categoriile</option>
+            </select>
+            <select
+              id="client-picker-filter-mus"
+              class="tpl-filter-select"
+              aria-label="Filtrează după grupă musculară"
+            >
+              <option value="">Toate grupele</option>
+            </select>
+            <select
+              id="client-picker-filter-eq"
+              class="tpl-filter-select"
+              aria-label="Filtrează după echipament"
+            >
+              <option value="">Tot echipamentul</option>
+            </select>
+          </div>
+
+          <ul id="client-picker-catalog-list" class="tpl-modal-list client-picker-tall-list"></ul>
+        </div>
+
+        <div id="client-picker-panel-workouts" class="tpl-tab-panel hidden" role="tabpanel">
+          <div class="tpl-workout-picker-row">
+            <select
+              id="client-picker-workout-select"
+              class="tpl-filter-select"
+              aria-label="Selectează un workout"
+            >
+              <option value="">Alege un workout...</option>
+            </select>
+            <button
+              type="button"
+              id="client-picker-apply-workout-btn"
+              class="btn-card-edit"
+            >
+              + Adaugă workout
+            </button>
+          </div>
+
+          <ul
+            id="client-picker-workout-exercises-list"
+            class="tpl-modal-list client-picker-tall-list"
+          ></ul>
+        </div>
+      </div>
+
+      <div class="tpl-modal-footer">
+        <button
+          type="button"
+          id="client-ex-picker-done-btn"
+          class="btn-card-edit"
+        >
+          Gata
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

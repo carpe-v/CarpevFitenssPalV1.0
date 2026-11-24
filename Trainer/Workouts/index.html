@@ -1,0 +1,61 @@
+<section class="view-panel workouts-panel">
+  <p id="workouts-status" class="message"></p>
+
+  <section id="workouts-grid" class="workouts-grid" aria-label="Workouts">
+    <p class="empty-hint">Se încarcă workout-urile...</p>
+  </section>
+
+  <!-- Modal Comun: Adăugare / Editare Workout + Căutare/Filtrare Exerciții -->
+  <div id="workout-edit-modal" class="workout-modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="workout-modal-title">
+    <div class="workout-modal">
+      <div class="workout-modal-header">
+        <h2 id="workout-modal-title" class="workout-modal-title">Editează workout</h2>
+        <button type="button" id="workout-modal-close-btn" class="workout-modal-close" aria-label="Închide">✕</button>
+      </div>
+
+      <div class="workout-modal-body">
+        <div class="inline-field-group">
+          <label for="workout-modal-name-input">Nume workout</label>
+          <input type="text" id="workout-modal-name-input" placeholder="ex. Push A / Full Body" />
+        </div>
+
+        <div class="workout-modal-section">
+          <div class="workout-modal-section-head">
+            <h3>Exerciții în workout (<span id="workout-modal-selected-count">0</span>)</h3>
+          </div>
+          <ul id="workout-modal-selected-list" class="workout-modal-list"></ul>
+        </div>
+
+        <div class="workout-modal-section">
+          <div class="workout-modal-section-head">
+            <h3>Catalog exerciții</h3>
+          </div>
+
+          <div class="workout-filters-row">
+            <input
+              type="search"
+              id="workout-ex-search"
+              class="workout-filter-input"
+              placeholder="Caută exercițiu după nume..."
+            />
+            <select id="workout-filter-cat" class="workout-filter-select" aria-label="Filtrează după categorie">
+              <option value="">Toate categoriile</option>
+            </select>
+            <select id="workout-filter-mus" class="workout-filter-select" aria-label="Filtrează după grupă musculară">
+              <option value="">Toate grupele</option>
+            </select>
+            <select id="workout-filter-eq" class="workout-filter-select" aria-label="Filtrează după echipament">
+              <option value="">Tot echipamentul</option>
+            </select>
+          </div>
+
+          <ul id="workout-modal-catalog-list" class="workout-modal-list workout-catalog-list"></ul>
+        </div>
+      </div>
+
+      <div class="workout-modal-footer">
+        <button type="button" id="workout-modal-save-btn" class="btn-card-edit">Salvează workout</button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panou Role c</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<!-- Ascundem conținutul până trece de verificarea de securitate -->
+<body style="display: none;">
+  <div class="dashboard">
+    <h1>Bine ai venit în zona Role A</h1>
+    <p id="user-info"></p>
+    <button id="logout-btn">Deconectare</button>
+  </div>
+
+  <script type="module">
+    import { protectRoute, logout } from '../authGuard.js';
+
+    const profile = await protectRoute('RoleA');
+    if (profile) {
+      document.getElementById('user-info').textContent = `Logat ca: ${profile.email} (${profile.role})`;
+    }
+
+    document.getElementById('logout-btn').addEventListener('click', logout);
+  </script>
+</body>
+</html>

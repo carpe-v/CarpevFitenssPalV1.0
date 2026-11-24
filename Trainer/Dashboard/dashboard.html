@@ -1,0 +1,56 @@
+<section class="view-panel">
+  <div class="view-header">
+    <h1>Dashboard Trainer</h1>
+  </div>
+
+  <p id="dash-user-info" class="view-subtitle"></p>
+  <p id="dash-status" class="message"></p>
+
+  <div class="kpi-grid">
+    <article class="kpi-card">
+      <span class="kpi-label">Clienți totali</span>
+      <span id="kpi-clients" class="kpi-value">0</span>
+      <span class="kpi-sub">Înregistrați în sistem</span>
+    </article>
+
+    <article class="kpi-card">
+      <span class="kpi-label">Pachete active</span>
+      <span id="kpi-active-pkgs" class="kpi-value">0</span>
+      <span class="kpi-sub">În desfășurare</span>
+    </article>
+
+    <article class="kpi-card">
+      <span class="kpi-label">Pachete terminate</span>
+      <span id="kpi-finished-pkgs" class="kpi-value">0</span>
+      <span class="kpi-sub">Finalizate</span>
+    </article>
+
+    <article class="kpi-card">
+      <span class="kpi-label">Ședințe efectuate</span>
+      <span id="kpi-sessions-done" class="kpi-value">0</span>
+      <span class="kpi-sub">Cumulat pe pachete</span>
+    </article>
+  </div>
+
+  <div class="dash-section">
+    <h2>Clienți cu pachet activ</h2>
+    <div id="active-clients-list" class="active-clients-list"></div>
+  </div>
+
+  <div class="table-section">
+    <h2>Exerciții</h2>
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Nume</th>
+            <th>Categorie</th>
+            <th>Grupă musculară</th>
+            <th>Echipament</th>
+          </tr>
+        </thead>
+        <tbody id="exercises-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>

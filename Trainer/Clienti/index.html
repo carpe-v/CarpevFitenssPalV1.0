@@ -1,0 +1,57 @@
+<section class="view-panel clients-panel">
+  <p id="clients-status" class="message"></p>
+
+  <div class="clients-toolbar">
+    <div class="search-client-box">
+      <label for="search-client" class="sr-only">Caută client</label>
+      <input
+        type="search"
+        id="search-client"
+        placeholder="Caută client după nume sau email..."
+      />
+    </div>
+  </div>
+
+  <section id="clients-grid" class="clients-grid" aria-label="Listă clienți">
+    <p class="empty-hint">Se încarcă clienții...</p>
+  </section>
+
+  <!-- Modal Adăugare / Editare Client -->
+  <div
+    id="client-modal"
+    class="client-modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="client-modal-title"
+  >
+    <div class="client-modal">
+      <div class="client-modal-header">
+        <h2 id="client-modal-title" class="client-modal-title">Adaugă client</h2>
+        <button type="button" id="client-modal-close-btn" class="client-modal-close" aria-label="Închide">✕</button>
+      </div>
+
+      <form id="client-form" class="client-modal-body">
+        <div class="inline-field-group">
+          <label for="client-name">Nume complet</label>
+          <input type="text" id="client-name" required placeholder="ex. Andrei Popescu" />
+        </div>
+
+        <div class="inline-field-group">
+          <label for="client-email">Email</label>
+          <input type="email" id="client-email" placeholder="ex. andrei@exemplu.ro" />
+        </div>
+
+        <div class="inline-field-group">
+          <label for="client-phone">Telefon</label>
+          <input type="tel" id="client-phone" placeholder="ex. 0722 000 000" />
+        </div>
+
+        <p id="client-message" class="message"></p>
+
+        <div class="client-modal-footer">
+          <button type="submit" id="save-client-btn" class="btn-card-edit">Salvează client</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

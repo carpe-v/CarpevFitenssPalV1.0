@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share data</title>
+  <link rel="stylesheet" href="./share-data.css" />
+</head>
+<body>
+  <main class="share-page">
+    <div class="share-shell">
+      <div class="share-top-bar">
+        <a href="../main.html#/clienti" id="share-back-link" class="back-link">← Înapoi la Profil</a>
+
+        <div class="share-tabs" role="tablist" aria-label="Mod export PDF">
+          <button
+            type="button"
+            id="tab-digital"
+            class="share-tab active"
+            role="tab"
+            aria-selected="true"
+            data-mode="digital"
+          >
+            Digital
+          </button>
+          <button
+            type="button"
+            id="tab-print"
+            class="share-tab"
+            role="tab"
+            aria-selected="false"
+            data-mode="print"
+          >
+            Print
+          </button>
+        </div>
+      </div>
+
+      <h1 class="share-title">Share data</h1>
+      <p id="share-status" class="message"></p>
+
+      <section class="share-config-card" aria-label="Configurare export PDF">
+        <div class="share-grid-2">
+          <div class="field-group">
+            <label for="share-package-select">Pachet</label>
+            <select id="share-package-select"></select>
+          </div>
+
+          <div class="field-group">
+            <label for="share-trainer-name">Nume antrenor</label>
+            <input
+              type="text"
+              id="share-trainer-name"
+              placeholder="ex. Alexandru Popescu"
+            />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Siglă antrenor</label>
+          <div class="logo-controls">
+            <button
+              type="button"
+              id="upload-logo-btn"
+              class="btn-logo-upload"
+              title="Încarcă sigla antrenorului"
+              aria-label="Încarcă sigla antrenorului"
+            ></button>
+            <input
+              type="file"
+              id="share-logo-input"
+              accept="image/png,image/jpeg,image/webp"
+              class="hidden-file-input"
+            />
+            <span id="share-logo-name" class="logo-filename">Nicio siglă încărcată</span>
+            <img
+              id="share-logo-preview"
+              class="logo-thumb hidden"
+              alt="Previzualizare siglă"
+            />
+            <button
+              type="button"
+              id="clear-logo-btn"
+              class="btn-mini hidden"
+            >
+              Șterge sigla
+            </button>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="sessions-header">
+            <label>Ședințe incluse în PDF</label>
+            <div class="sessions-actions">
+              <button type="button" id="select-all-sessions-btn" class="btn-mini">Toate</button>
+              <button type="button" id="clear-all-sessions-btn" class="btn-mini">Niciuna</button>
+            </div>
+          </div>
+          <div id="share-sessions-list" class="sessions-pills"></div>
+        </div>
+
+        <div class="field-group">
+          <div class="preview-header">
+            <label>Previzualizare PDF</label>
+            <span id="preview-meta-pill" class="preview-meta-pill">Digital • A4</span>
+          </div>
+
+          <div id="share-preview-sheet" class="pdf-sheet theme-digital">
+            <div class="pdf-sheet-header">
+              <div class="pdf-sheet-header-text">
+                <p id="preview-trainer-line" class="pdf-sheet-meta-line">Antrenor: —</p>
+                <p id="preview-client-line" class="pdf-sheet-meta-line">Client: —</p>
+              </div>
+              <img id="preview-logo-img" class="pdf-sheet-logo hidden" alt="Siglă antrenor" />
+            </div>
+
+            <div id="preview-sessions-body" class="pdf-sheet-body"></div>
+          </div>
+        </div>
+
+        <div class="share-footer">
+          <button type="button" id="generate-pdf-btn" class="btn-generate-pdf">
+            Generează PDF Digital
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./share-data.js"></script>
+</body>
+</html>

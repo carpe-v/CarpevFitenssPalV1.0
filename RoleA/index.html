@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panou Role A</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./roleA.css" />
+</head>
+<body class="has-topbar" style="display: none;">
+  <header class="topbar">
+    <div class="topbar-brand">
+      <span>Aplicație</span>
+      <span class="role-badge">RoleA</span>
+    </div>
+
+    <div class="avatar-menu-wrapper">
+      <button
+        type="button"
+        id="avatar-btn"
+        class="avatar-btn"
+        aria-haspopup="menu"
+        aria-expanded="false"
+        aria-controls="avatar-dropdown"
+        title="Meniu cont"
+      >
+        RA
+      </button>
+
+      <div id="avatar-dropdown" class="avatar-dropdown hidden" role="menu">
+        <div class="avatar-dropdown-header">
+          <span id="menu-user-email" class="avatar-dropdown-email">Utilizator</span>
+        </div>
+
+        <button type="button" id="open-password-modal" class="dropdown-item" role="menuitem">
+          <span>Schimbare parolă</span>
+        </button>
+
+        <button type="button" id="logout-btn" class="dropdown-item danger" role="menuitem">
+          <span>Deconectare</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="rolea-main">
+    <h1>Bine ai venit în zona Role A</h1>
+    <p id="user-info" class="rolea-user-info"></p>
+  </main>
+
+  <div
+    id="password-modal"
+    class="password-modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="password-modal-title"
+  >
+    <div class="password-modal-card">
+      <h2 id="password-modal-title">Schimbare parolă</h2>
+
+      <form id="password-form">
+        <div class="input-group">
+          <label for="new-password">Parola nouă</label>
+          <input
+            type="password"
+            id="new-password"
+            required
+            minlength="6"
+            placeholder="Minim 6 caractere"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="confirm-password">Confirmă parola nouă</label>
+          <input
+            type="password"
+            id="confirm-password"
+            required
+            minlength="6"
+            placeholder="Repetă parola nouă"
+          />
+        </div>
+
+        <div class="password-modal-actions">
+          <button type="button" id="cancel-password-btn" class="btn-cancel-modal">Anulează</button>
+          <button type="submit" id="save-password-btn">Salvează</button>
+        </div>
+      </form>
+
+      <p id="password-message" class="message"></p>
+    </div>
+  </div>
+
+  <script type="module" src="./roleA.js"></script>
+</body>
+</html>
