@@ -18,7 +18,11 @@ function getRootPrefix() {
 }
 
 function getRoleUrl(role) {
-  return `${getRootPrefix()}${role}/index.html`;
+  const prefix = getRootPrefix();
+  if (role === 'RoleB') {
+    return `${prefix}Trainer/main.html`;
+  }
+  return `${prefix}${role}/index.html`;
 }
 
 function getLoginUrl() {
